@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerManager : MonoBehaviour {
 
     public float speed;
@@ -14,7 +15,7 @@ public class PlayerManager : MonoBehaviour {
 
 	void Start ()
     {
-        
+      
     }
 
     void Update()
@@ -24,6 +25,5 @@ public class PlayerManager : MonoBehaviour {
 
         transform.Translate(Vector3.forward * v * speed * Time.deltaTime);
         transform.Rotate(Vector3.up * h * rotspeed * Time.deltaTime);
-              
     }
 }
