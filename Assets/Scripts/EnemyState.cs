@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyState : MonoBehaviour {
 
-    Enemystate enemystate;
+    public Enemystate enemystate;
 
     Animator anim;
 
     public GameObject target;
-	
+
+    float HP = 100f;
+
     public enum Enemystate
     {
         IDLE,
@@ -35,29 +37,36 @@ public class EnemyState : MonoBehaviour {
         switch (enemystate)
         {
             case Enemystate.IDLE:
+
                 if(distance >= 2f)
                 {
                    enemystate = Enemystate.WALK;
                 }
+
                 break;
 
             case Enemystate.WALK:
 
-                if(distance <= 2f)
+                if (distance <= 2f)
                 {
-                    anim.SetBool("Walk", true);
                     enemystate = Enemystate.ATTACK;
                 }
 
                 break;
             case Enemystate.ATTACK:
 
-                anim.SetBool("Attack", true);
-
+                
                 if (distance >= 2f)
                 {
-                    anim.SetBool("Walk", true);
                     enemystate = Enemystate.WALK;
+                }
+
+                break;
+            case Enemystate.DEAD:
+
+                if(HP <= 0)
+                {
+                    Destroy(gameObject,3f);
                 }
 
                 break;

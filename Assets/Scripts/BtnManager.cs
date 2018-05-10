@@ -11,6 +11,16 @@ public class BtnManager : MonoBehaviour {
         Application.LoadLevel(1);
     }
 
+    public void NextBtn()
+    {
+        Application.LoadLevel(3);
+    }
+
+    public void ReturnBtn()
+    {
+        Application.LoadLevel(2);
+    }
+
     public void MenuBtn()
     {
         Btn[0].SetActive(true);
@@ -26,7 +36,10 @@ public class BtnManager : MonoBehaviour {
         Application.LoadLevel(2);
     }
 
-
+    public void AttackBtn()
+    {
+       
+    }
     //public void SoundBtn()
     //{
 

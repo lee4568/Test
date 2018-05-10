@@ -16,7 +16,7 @@ public class FloatingPlayer2DController : MonoBehaviour
 	
 	void FixedUpdate ()
     {
-        Vector3 moveVec = new Vector3(CrossPlatformInputManager.GetAxis("Horizontal"),CrossPlatformInputManager.GetAxis("Vertical"),0) * moveForce;
+        Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"),CrossPlatformInputManager.GetAxis("Vertical")) * moveForce;
         bool isBoosting = CrossPlatformInputManager.GetButton("Boost");
         //Debug.Log(isBoosting ? boostMultiplier : 1);
         myBody.AddForce(moveVec * (isBoosting ? boostMultiplier : 1));
