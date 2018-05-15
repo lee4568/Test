@@ -19,10 +19,18 @@ public class Login : MonoBehaviour {
    IEnumerator LoginCoroutine()
     {
         WWWForm form = new WWWForm();
-        form.AddField("UserID", PlayerPrefs.GetInt("UserID"));
-        form.AddField("UserPass", SystemInfo.deviceUniqueIdentifier);
+        form.AddField("UserID", PlayerPrefs.GetString("UserID"));
+        form.AddField("UserPass", PlayerPrefs.GetInt("UserPass"));
         WWW www = new WWW(LoginURL);
         yield return www;
         Debug.Log(www.text);
+    }
+
+    public void SetData(string data)
+    {
+        var gamedata = JSON.Parse(data);
+
+        PlayerPrefs.SetString("UserID",gamedata["UserID"]);
+        PlayerPrefs.SetInt("UserPass", int.Parse(gamedata["UserPass"]));
     }
 }
