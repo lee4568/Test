@@ -33,4 +33,23 @@ public class Login : MonoBehaviour {
         PlayerPrefs.SetString("UserID",gamedata["UserID"]);
         PlayerPrefs.SetInt("UserPass", int.Parse(gamedata["UserPass"]));
     }
+
+    public void InsertBtn()
+    {
+        StartCoroutine(SigninCorourine());
+    }
+
+    IEnumerator SigninCorourine()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("UserID", PlayerPrefs.GetString("UserID"));
+        form.AddField("UserPass", PlayerPrefs.GetInt("UserPass"));
+
+        WWW www = new WWW(SigninURL,form);
+        yield return www;
+
+        Debug.Log(www.text);
+    }
+
+
 }
